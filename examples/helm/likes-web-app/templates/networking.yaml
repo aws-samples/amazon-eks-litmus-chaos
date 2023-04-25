@@ -41,7 +41,7 @@ spec:
           number: 80
   - match:
     - uri:
-        prefix: /api/like
+        exact: /api/like
     route:
     - destination:
         host: like-service
