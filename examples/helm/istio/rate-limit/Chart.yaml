@@ -1,0 +1,6 @@
+apiVersion: v2
+description: Helm chart for deploying rate limit
+name: rate-limit
+sources:
+- http://github.com/istio/istio
+version: 1.17.2
