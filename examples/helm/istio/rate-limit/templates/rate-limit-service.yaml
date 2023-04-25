@@ -21,16 +21,16 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: ratelimit-config
+  name: ratelimit-config
 data:
-    config.yaml: |
-        domain: likes-web-app
-        descriptors:
-        - key: PATH
-            value: "/api/like"
-            rate_limit:
-                unit: minute
-                requests_per_unit: 20
+  config.yaml: |
+    domain: likes-web-app
+    descriptors:
+      - key: PATH
+        value: "/api/like"
+        rate_limit:
+          unit: minute
+          requests_per_unit: 20
 ---
 apiVersion: v1
 kind: Service
