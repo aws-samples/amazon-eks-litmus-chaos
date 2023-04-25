@@ -17,23 +17,25 @@
 # Ratelimit service and deployment
 
 # TO change to second (per second)
- apiVersion: v1
- kind: ConfigMap
- metadata:
-   name: ratelimit-config
- data:
-   config.yaml: |
-     domain: likes-web-app
-     descriptors:
-       - key: PATH
-         value: "/api/like"
-         rate_limit:
-           unit: minute
-           requests_per_unit: 5
-       - key: PATH
-         rate_limit:
-           unit: minute
-           requests_per_unit: 10
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+name: ratelimit-config
+data:
+    config.yaml: |
+        domain: likes-web-app
+        descriptors:
+        - key: PATH
+            value: "/api/like"
+            rate_limit:
+            unit: minute
+            requests_per_unit: 5
+        - key: PATH
+            rate_limit:
+            unit: minute
+            requests_per_unit: 10
+---
 apiVersion: v1
 kind: Service
 metadata:
