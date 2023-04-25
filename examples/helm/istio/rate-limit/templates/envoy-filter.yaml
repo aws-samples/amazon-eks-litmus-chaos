@@ -27,7 +27,7 @@ spec:
           typed_config:
             "@type": type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit
             # domain can be anything! Match it to the ratelimter service config
-            domain: likes-web-app
+            domain: ratelimit-config
             failure_mode_deny: true
             timeout: 10s
             rate_limit_service:
@@ -37,30 +37,30 @@ spec:
                   authority: ratelimit.istio-system.svc.cluster.local
               transport_api_version: V3
 ---
-apiVersion: networking.istio.io/v1alpha3
-kind: EnvoyFilter
-metadata:
-  name: filter-ratelimit-svc
-  namespace: istio-system
-spec:
-  workloadSelector:
-    labels:
-      istio: ingress
-  configPatches:
-    - applyTo: VIRTUAL_HOST
-      match:
-        context: GATEWAY
-        routeConfiguration:
-          vhost:
-            name: ""
-            route:
-              action: ANY
-      patch:
-        operation: MERGE
-        # Applies the rate limit rules.
-        value:
-          rate_limits:
-            - actions: # any actions in here
-              - request_headers:
-                  header_name: ":path"
-                  descriptor_key: "PATH"
+# apiVersion: networking.istio.io/v1alpha3
+# kind: EnvoyFilter
+# metadata:
+#   name: filter-ratelimit-svc
+#   namespace: istio-system
+# spec:
+#   workloadSelector:
+#     labels:
+#       istio: ingress
+#   configPatches:
+#     - applyTo: VIRTUAL_HOST
+#       match:
+#         context: GATEWAY
+#         routeConfiguration:
+#           vhost:
+#             name: ""
+#             route:
+#               action: ANY
+#       patch:
+#         operation: MERGE
+#         # Applies the rate limit rules.
+#         value:
+#           rate_limits:
+#             - actions: # any actions in here
+#               - request_headers:
+#                   header_name: ":path"
+#                   descriptor_key: "PATH"
