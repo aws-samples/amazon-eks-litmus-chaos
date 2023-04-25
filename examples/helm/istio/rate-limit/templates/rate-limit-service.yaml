@@ -16,26 +16,37 @@
 # Redis service and deployment
 # Ratelimit service and deployment
 
-# Note: a configmap is needed to make the rate limit deployment work properly, for example:
-#
-#  apiVersion: v1
-#  kind: ConfigMap
-#  metadata:
-#    name: ratelimit-config
-#  data:
-#    config.yaml: |
-#      domain: echo-ratelimit
-#      descriptors:
-#        - key: PATH
-#          value: "/"
-#          rate_limit:
-#            unit: minute
-#            requests_per_unit: 1
-#        - key: PATH
-#          rate_limit:
-#            unit: minute
-#            requests_per_unit: 100
-##################################################################################################
+# TO change to second (per second)
+ apiVersion: v1
+ kind: ConfigMap
+ metadata:
+   name: ratelimit-config
+ data:
+   config.yaml: |
+     domain: likes-web-app
+     descriptors:
+       - key: PATH
+         value: "/api/like"
+         rate_limit:
+           unit: minute
+           requests_per_unit: 5
+       - key: PATH
+         rate_limit:
+           unit: minute
+           requests_per_unit: 10
+data:
+  config.yaml: |
+    domain: foo-domain
+    descriptors:
+      - key: BAR
+        value: "/foo"
+        rate_limit:
+          unit: minute
+          requests_per_unit: 1
+      - key: BAR
+        rate_limit:
+          unit: minute
+          requests_per_unit: 100
 apiVersion: v1
 kind: Service
 metadata:
