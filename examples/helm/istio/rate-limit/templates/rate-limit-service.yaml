@@ -29,8 +29,8 @@ data:
         - key: PATH
             value: "/api/like"
             rate_limit:
-            unit: minute
-            requests_per_unit: 20
+                unit: minute
+                requests_per_unit: 20
 ---
 apiVersion: v1
 kind: Service
