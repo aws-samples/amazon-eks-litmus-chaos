@@ -97,7 +97,6 @@ kind: Deployment
 metadata:
   name: ratelimit
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: ratelimit
