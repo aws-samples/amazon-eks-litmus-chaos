@@ -16,7 +16,6 @@
 # Redis service and deployment
 # Ratelimit service and deployment
 
-# TO change to second (per second)
 ---
 apiVersion: v1
 kind: ConfigMap
