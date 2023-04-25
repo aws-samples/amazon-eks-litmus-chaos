@@ -12,7 +12,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "*"
+    - "demo.summit.angullia.people.aws.dev"
   - port:
       number: 443
       name: https
