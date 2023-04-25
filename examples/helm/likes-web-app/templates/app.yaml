@@ -1,0 +1,155 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-app
+  namespace: likes-web-app
+  labels:
+    app: ui-app
+spec:
+  selector:
+    matchLabels:
+      app: ui-app
+  template:
+    metadata:
+      labels:
+        app: ui-app
+      annotations:
+        prometheus.io/scrape: 'false'
+    spec:
+      nodeSelector:
+        node_type: workload
+      containers:
+        - name: ui-app
+          image: {{ .Values.ui-app.image }}
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui-app
+  namespace: likes-web-app
+  labels:
+    app: ui-app
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: ui-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counter-service
+  namespace: likes-web-app
+  labels:
+    app: counter-service
+spec:
+  selector:
+    matchLabels:
+      app: counter-service
+  template:
+    metadata:
+      labels:
+        app: counter-service
+      annotations:
+        prometheus.io/scrape: 'true'
+    spec:
+      nodeSelector:
+        node_type: workload
+      containers:
+        - name: counter-service
+          image: {{ .Values.counter-service.image }}
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 9090
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 9090
+            initialDelaySeconds: 1
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "4"
+              memory: "200Mi"
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: counter-service
+  namespace: likes-web-app
+  labels:
+    app: counter-service
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 9090
+  selector:
+    app: counter-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: like-service
+  namespace: likes-web-app
+  labels:
+    app: like-service
+spec:
+  selector:
+    matchLabels:
+      app: like-service
+  template:
+    metadata:
+      labels:
+        app: like-service
+      annotations:
+        prometheus.io/scrape: 'true'
+    spec:
+      nodeSelector:
+        node_type: workload
+      containers:
+        - name: like-service
+          image: {{ .Values.like-service.image }}
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 9080
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 9080
+            initialDelaySeconds: 1
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "4"
+              memory: "200Mi"
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: like-service
+  namespace: likes-web-app
+  labels:
+    app: like-service
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 9080
+  selector:
+    app: like-service

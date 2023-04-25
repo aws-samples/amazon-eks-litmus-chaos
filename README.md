@@ -1,11 +1,6 @@
-## My Project
+## Amazon EKS LitmusChaos Samples
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+This repository contains sample templates and microservices for a session on Chaos Engineering at AWS Summit ASEAN 2023.
 
 ## Security
 
@@ -14,4 +9,3 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-

@@ -1,0 +1,57 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: likes-web-app-gateway
+  namespace: likes-web-app
+spec:
+  selector:
+    istio: ingress
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+  - port:
+      number: 443
+      name: https
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: likes-web-app
+  namespace: likes-web-app
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - likes-web-app-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /api/counter
+    route:
+    - destination:
+        host: counter-service
+        port:
+          number: 80
+  - match:
+    - uri:
+        prefix: /api/like
+    route:
+    - destination:
+        host: like-service
+        port:
+          number: 80
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: ui-app
+        port:
+          number: 80

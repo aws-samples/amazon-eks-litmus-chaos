@@ -1,0 +1,14 @@
+destinationServer: ''
+argoNamespace: ''
+argoProject: ''
+
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/aws-samples/amazon-eks-litmus-chaos
+    targetRevision: main
+
+  # Thoses default values can be surcharged by Infrastructure as Code
+  clusterName: eks-blueprint # the name of EKS cluster
+  blueprint: 'terraform' # cdk | terraform

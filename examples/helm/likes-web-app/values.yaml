@@ -1,0 +1,9 @@
+
+ui-app:
+  image: REPLACE_ME
+
+counter-service:
+  image: REPLACE_ME
+
+like-service:
+  image: REPLACE_ME
