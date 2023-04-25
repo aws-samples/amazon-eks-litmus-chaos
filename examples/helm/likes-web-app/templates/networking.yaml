@@ -33,7 +33,7 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /api/counter
+        prefix: /api/counter/count
     route:
     - destination:
         host: counter-service
