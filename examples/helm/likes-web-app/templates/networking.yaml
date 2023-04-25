@@ -47,23 +47,11 @@ spec:
         host: like-service
         port:
           number: 80
-  # - match:
-  #   - uri:
-  #       prefix: /
-  #   route:
-  #   - destination:
-  #       host: ui-app
-  #       port:
-  #         number: 80
   - match:
     - uri:
         exact: /
-    # - uri:
-    #     exact: /callback
     - uri:
         prefix: /static
-    # - uri:
-    #     regex: '^.*\.(ico|png|jpg)$'
     route:
     - destination:
         host: ui-app             
