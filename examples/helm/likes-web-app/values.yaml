@@ -1,9 +1,9 @@
 
-ui-app:
+ui_app:
   image: REPLACE_ME
 
-counter-service:
+counter_service:
   image: REPLACE_ME
 
-like-service:
+like_service:
   image: REPLACE_ME
