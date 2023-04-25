@@ -1,9 +1,9 @@
 
-ui-app:
+ui_app:
   image: 959472914689.dkr.ecr.ap-southeast-1.amazonaws.com/ui-app:v1.0.0
 
-counter-service:
+counter_service:
   image: 959472914689.dkr.ecr.ap-southeast-1.amazonaws.com/counter-service:v1.0.0
 
-like-service:
+like_service:
   image: 959472914689.dkr.ecr.ap-southeast-1.amazonaws.com/like-service:v1.0.0
