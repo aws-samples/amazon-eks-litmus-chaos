@@ -13,12 +13,12 @@ spec:
       protocol: HTTP
     hosts:
     - "demo.summit.angullia.people.aws.dev"
-  - port:
-      number: 443
-      name: https
-      protocol: HTTP
-    hosts:
-    - "demo.summit.angullia.people.aws.dev"
+  # - port:
+  #     number: 443
+  #     name: https
+  #     protocol: HTTP
+  #   hosts:
+  #   - "demo.summit.angullia.people.aws.dev"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
