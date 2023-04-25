@@ -315,7 +315,7 @@ spec:
 
     exporters:
       prometheusremotewrite:
-        endpoint: REPLACE_ME
+        endpoint: https://aps-workspaces.ap-southeast-1.amazonaws.com/workspaces/ws-ee136d1d-1987-47e3-bea9-1f84805e291d/api/v1/remote_write
         auth:
           authenticator: sigv4auth
 
