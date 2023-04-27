@@ -52,6 +52,8 @@ spec:
         exact: /
     - uri:
         prefix: /static
+    - uri:
+        regex: '^.*\.(ico|png|jpg|json)$'
     route:
     - destination:
         host: ui-app             
