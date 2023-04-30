@@ -29,12 +29,12 @@ data:
         value: "/api/like"
         rate_limit:
           unit: second
-          requests_per_unit: 2500
+          requests_per_unit: 1
       - key: PATH
         value: "/api/counter/count"
         rate_limit:
           unit: second
-          requests_per_unit: 2500
+          requests_per_unit: 1
       - key: PATH
         value: "/"
         rate_limit:
