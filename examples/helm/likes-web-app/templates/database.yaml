@@ -73,6 +73,8 @@ spec:
       labels:
         app: postgres
     spec:
+      nodeSelector:
+        node_type: workload
       terminationGracePeriodSeconds: 5
       containers:
         - name: postgres
