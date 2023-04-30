@@ -17,8 +17,8 @@ spec:
     path: "/mnt/data"
   persistentVolumeReclaimPolicy: Retain
 ---
-apiVersion: v1
 kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
   name: redis-server-pv-claim
   labels:
@@ -27,7 +27,7 @@ metadata:
 spec:
   storageClassName: manual
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi
