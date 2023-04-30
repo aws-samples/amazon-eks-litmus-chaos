@@ -95,10 +95,10 @@ spec:
               name: postgredb
             - mountPath: /docker-entrypoint-initdb.d
               name: init
-          # resources:
-          #   requests:
-          #     memory: "64Mi"
-          #     cpu: "250m"
+          resources:
+            requests:
+              memory: 8Gi
+              cpu: "4"
           #   limits:
           #     memory: "128Mi"
           #     cpu: "500m"

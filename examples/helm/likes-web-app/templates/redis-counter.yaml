@@ -55,6 +55,10 @@ spec:
           image: redis:7.0.10
           ports:
           - containerPort: 6379
+          resources:
+            requests:
+              memory: 8Gi
+              cpu: "4"
       volumes:
         - name: redis-data
           persistentVolumeClaim:
