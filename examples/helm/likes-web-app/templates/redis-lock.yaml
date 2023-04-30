@@ -22,9 +22,10 @@ spec:
         image: redis:7.0.10
         ports:
         - containerPort: 6379
-        requests:
-          memory: 8Gi
-          cpu: "4"
+        resources:
+          requests:
+            memory: 8Gi
+            cpu: "4"
 ---
 apiVersion: v1
 kind: Service
