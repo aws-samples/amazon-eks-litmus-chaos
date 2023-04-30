@@ -51,14 +51,14 @@ spec:
       nodeSelector:
         node_type: workload
       containers:
-      - name: redis-server
-        image: redis:7.0.10
-        ports:
-        - containerPort: 6379
-	  volumes:
-      - name: redis-data
-      	persistentVOlumeClaim:
-          claimName: redis-server-pv-claim
+        - name: redis-server
+          image: redis:7.0.10
+          ports:
+          - containerPort: 6379
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: redis-server-pv-claim
 # ---
 # apiVersion: apps/v1
 # kind: Deployment
