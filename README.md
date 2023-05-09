@@ -1,4 +1,4 @@
-## Amazon EKS LitmusChaos Samples
+## Amazon EKS LitmusChaos Demo
 
 This repository contains sample templates and microservices for a session on Chaos Engineering at AWS Summit ASEAN 2023.
 
