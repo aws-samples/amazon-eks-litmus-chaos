@@ -25,6 +25,13 @@ export AWS_ACCOUNT_ID=REPLACE_ME
 export AWS_REGION=REPLACE_ME
 ```
 
+### Deploy Observability and ECR resources
+
+```
+cd examples/terraform/core
+terraform apply
+```
+
 ### Deploy Amazon EKS
 
 ```

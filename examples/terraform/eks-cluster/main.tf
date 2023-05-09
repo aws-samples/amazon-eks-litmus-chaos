@@ -164,20 +164,3 @@ module "adot_collector_irsa_addon" {
   eks_cluster_id                    = module.eks_blueprints.eks_cluster_id
   eks_oidc_provider_arn             = module.eks_blueprints.eks_oidc_provider_arn
 }
-
-
-#---------------------------------------------------------------
-# ECR Resources
-#---------------------------------------------------------------
-
-resource "aws_ecr_repository" "like-service" {
-  name                 = "like-service"
-  image_tag_mutability = "IMMUTABLE"
-  force_delete         = true
-}
-
-resource "aws_ecr_repository" "counter-service" {
-  name                 = "counter-service"
-  image_tag_mutability = "IMMUTABLE"
-  force_delete         = true
-}
