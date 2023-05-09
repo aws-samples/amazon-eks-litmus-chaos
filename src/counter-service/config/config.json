@@ -1,0 +1,8 @@
+{
+  "baseApiPath": "/api/counter",
+  "apiListenAddr": ":9090",
+  "redisAddr": "redis-server:6379",
+  "serviceName": "counter-service",
+  "serviceNamespace": "likes-web-app",
+  "otelAddr": "0.0.0.0:4317"
+}

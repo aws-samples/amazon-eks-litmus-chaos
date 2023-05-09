@@ -1,0 +1,10 @@
+{
+  "baseApiPath": "/api/like",
+  "apiListenAddr": ":9080",
+  "dbHost": "postgres",
+  "dbPort": "5432",
+  "dbUser": "postgres",
+  "dbName": "postgres",
+  "dbPassword": "postgres",
+  "lockAddr": "redis-server:6379"
+}
