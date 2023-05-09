@@ -1,7 +1,3 @@
-
-ui_app:
-  image: REPLACE_ME
-
 counter_service:
   image: REPLACE_ME
 

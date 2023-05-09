@@ -13,10 +13,6 @@ spec:
     prometheus.io/scrape: 'true'
     prometheus.io/port: '8888'
   resources:
-    # requests:
-    #   cpu: "2"
-    # limits:
-    #   cpu: "4"
   config: |
     extensions:
       sigv4auth:

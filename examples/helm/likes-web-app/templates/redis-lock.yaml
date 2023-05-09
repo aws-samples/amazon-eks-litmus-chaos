@@ -1,38 +1,38 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: redis-lock
-#   labels:
-#     app: redis-lock
-#   namespace: likes-web-app
-# spec:
-#   selector:
-#     matchLabels:
-#       app: redis-lock
-#   replicas: 1
-#   template:
-#     metadata:
-#       labels:
-#         app: redis-lock
-#     spec:
-#       nodeSelector:
-#         node_type: workload
-#       containers:
-#       - name: redis-lock
-#         image: redis:7.0.10
-#         ports:
-#         - containerPort: 6379
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: redis-lock
-#   labels:
-#     app: redis-lock
-#   namespace: likes-web-app
-# spec:
-#   ports:
-#   - port: 6379
-#     targetPort: 6379
-#   selector:
-#     app: redis-lock
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-lock
+  labels:
+    app: redis-lock
+  namespace: likes-web-app
+spec:
+  selector:
+    matchLabels:
+      app: redis-lock
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis-lock
+    spec:
+      nodeSelector:
+        node_type: workload
+      containers:
+      - name: redis-lock
+        image: redis:7.0.10
+        ports:
+        - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-lock
+  labels:
+    app: redis-lock
+  namespace: likes-web-app
+spec:
+  ports:
+  - port: 6379
+    targetPort: 6379
+  selector:
+    app: redis-lock

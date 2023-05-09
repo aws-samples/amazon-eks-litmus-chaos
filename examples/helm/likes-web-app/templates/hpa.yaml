@@ -4,7 +4,7 @@ metadata:
   name: counter-service
   namespace: likes-web-app
 spec:
-  maxReplicas: 10
+  maxReplicas: 5
   minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
@@ -24,7 +24,7 @@ metadata:
   name: like-service
   namespace: likes-web-app
 spec:
-  maxReplicas: 10
+  maxReplicas: 5
   minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
@@ -37,24 +37,4 @@ spec:
       target:
         type: Utilization
         averageUtilization: 70
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: ui-app
-  namespace: likes-web-app
-spec:
-  maxReplicas: 10
-  minReplicas: 3
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: ui-app
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 60
 ---

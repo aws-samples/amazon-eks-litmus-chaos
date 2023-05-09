@@ -1,15 +1,48 @@
-apiVersion: apps/v1
-kind: Deployment
+---
+kind: PersistentVolume
+apiVersion: v1
 metadata:
-  name: redis-server
+  name: redis-server-pv-volume
+  labels:
+    type: local
+    app: redis-server
+  namespace: likes-web-app
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+  persistentVolumeReclaimPolicy: Retain
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redis-server-pv-claim
   labels:
     app: redis-server
   namespace: likes-web-app
 spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-server
+  namespace: likes-web-app
+spec:
+  serviceName: redis-server
+  replicas: 1
   selector:
     matchLabels:
       app: redis-server
-  replicas: 1
   template:
     metadata:
       labels:
@@ -18,10 +51,14 @@ spec:
       nodeSelector:
         node_type: workload
       containers:
-      - name: redis-server
-        image: redis:7.0.10
-        ports:
-        - containerPort: 6379
+        - name: redis-server
+          image: redis:7.0.10
+          ports:
+          - containerPort: 6379
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: redis-server-pv-claim
 ---
 apiVersion: v1
 kind: Service

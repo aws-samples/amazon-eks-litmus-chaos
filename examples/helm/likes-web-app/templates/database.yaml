@@ -19,7 +19,7 @@ data:
       ('Item 1',0, ''),
       ('Item 2',0, ''),
       ('Item 3',0, ''),
-      ('Item 4',0, '');
+      ('Item 4',0,'');
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -71,6 +71,8 @@ spec:
       labels:
         app: postgres
     spec:
+      nodeSelector:
+        node_type: workload
       terminationGracePeriodSeconds: 5
       containers:
         - name: postgres
@@ -91,13 +93,6 @@ spec:
               name: postgredb
             - mountPath: /docker-entrypoint-initdb.d
               name: init
-          # resources:
-          #   requests:
-          #     memory: "64Mi"
-          #     cpu: "250m"
-          #   limits:
-          #     memory: "128Mi"
-          #     cpu: "500m"
       volumes:
         - name: postgredb
           persistentVolumeClaim:
