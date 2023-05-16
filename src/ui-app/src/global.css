@@ -1,0 +1,67 @@
+@import url("https://fonts.cdnfonts.com/css/amazon-ember");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body {
+  margin: 0;
+  line-height: normal;
+  font-family: "Amazon Ember", sans-serif;
+}
+
+.MuiTypography-root {
+  font-family: "Amazon Ember", sans-serif !important;
+}
+
+:root {
+  /* fonts */
+  --body-paragraph-regular: "Open Sans";
+  --heading-heading-3: "Amazon Ember";
+
+  /* font sizes */
+  --body-paragraph-regular-size: 14px;
+  --body-small-size: 12px;
+  --heading-heading-3-size: 20px;
+  --heading-heading-2-size: 24px;
+  --font-size-31xl: 50px;
+  --font-size-11xl: 30px;
+  --special-large-heavy-size: 48px;
+
+  /* Colors */
+  --grey-100: #fbfbfb;
+  --grey-800: #0f1b2a;
+  --grey-900: #000716;
+  --color-gray-100: rgba(0, 0, 0, 0.6);
+  --grey-600: #414d5c;
+  --color-darkslategray-100: #363b3e;
+  --color-darkslategray-200: #232f3e;
+  --color-white: #fff;
+  --grey-300: #d1d5db;
+  --grey-550: #5f6b7a;
+  --blue-600: #0972d3;
+  --color-gainsboro: #d8d8d8;
+  --grey-500: #7d8998;
+  --color-orange: #ff9900;
+  --color-black: #000;
+
+  /* Gaps */
+  --gap-5xs: 8px;
+  --gap-9xs: 4px;
+  --gap-xs: 12px;
+
+  /* Paddings */
+  --padding-2xs: 11px;
+  --padding-13xl: 32px;
+  --padding-3xl: 22px;
+  --padding-xl: 20px;
+  --padding-4xs: 9px;
+  --padding-7xs: 6px;
+  --padding-base: 16px;
+  --padding-xs: 12px;
+  --padding-9xs: 4px;
+
+  /* border radiuses */
+  --br-9xs: 4px;
+  --br-mini: 15px;
+  --br-5xs: 8px;
+  --br-11xs: 2px;
+}
