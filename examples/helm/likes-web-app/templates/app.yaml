@@ -2,6 +2,51 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: ui-app
+  namespace: likes-web-app
+  labels:
+    app: ui-app
+spec:
+  selector:
+    matchLabels:
+      app: ui-app
+  template:
+    metadata:
+      labels:
+        app: ui-app
+      annotations:
+        prometheus.io/scrape: 'false'
+    spec:
+      nodeSelector:
+        node_type: workload
+      containers:
+        - name: ui-app
+          image: {{ .Values.ui_app.image }}
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui-app
+  namespace: likes-web-app
+  labels:
+    app: ui-app
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: ui-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: counter-service
   namespace: likes-web-app
   labels:

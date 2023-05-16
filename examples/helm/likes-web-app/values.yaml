@@ -3,3 +3,6 @@ counter_service:
 
 like_service:
   image: REPLACE_ME
+
+ui_app:
+  image: REPLACE_ME

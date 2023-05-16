@@ -41,3 +41,17 @@ spec:
         host: like-service
         port:
           number: 80
+  - match:
+    - uri:
+        exact: /
+    - uri:
+        exact: /likes-service
+    - uri:
+        prefix: /static
+    - uri:
+        regex: '^.*\.(ico|png|jpg|json)$'
+    route:
+    - destination:
+        host: ui-app             
+        port:
+          number: 80
