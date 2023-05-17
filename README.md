@@ -4,9 +4,12 @@ This repository contains sample templates and microservices for a session on Cha
 
 ## Usage
 
-### Sample Workload
+### Sample Workloads
 
-![workload image](docs/workload-archi.png "Sample Workload")
+
+#### Likes Web App
+
+![likes web app image](docs/workload-archi.png "Likes Web App")
 
 ### Configure Variables
 
