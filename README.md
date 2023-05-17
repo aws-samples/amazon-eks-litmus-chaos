@@ -17,6 +17,9 @@ counter_service:
 
 like_service:
   image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/like-service:v1.0.0
+
+ui-app:
+  image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/ui-app:v1.0.0
 ```
 
 Replace the values accordingly and set the env variables in your shell.
@@ -51,6 +54,10 @@ docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/counter-service:v1
 docker build --platform linux/amd64 -t like-service src/like-service
 docker tag like-service:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/like-service:v1.0.0
 docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/like-service:v1.0.0
+
+docker build --platform linux/amd64 -t like-service src/ui-app
+docker tag ui-app:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/ui-app:v1.0.0
+docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/ui-app:v1.0.0
 ```
 
 ## Security
