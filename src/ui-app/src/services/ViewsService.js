@@ -1,11 +1,9 @@
 import axios from "axios";
-
-const COUNTER_API_BASE_URL = "http://localhost:9090/api/counter"; // local
+import { COUNTER_API_BASE_URL } from "../config";
 
 class ViewsService {
 
     getViews(){
-        // console.log(COUNTER_API_BASE_URL);
         return axios.get(COUNTER_API_BASE_URL + '/count');
     }
 
