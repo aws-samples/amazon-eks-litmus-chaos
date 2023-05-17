@@ -42,7 +42,10 @@ cd examples/terraform/eks-cluster
 terraform apply
 ```
 
-### Deploy Microservices
+### Configure API
+In `src/ui-app/src/config/index.js`, set `local` to `false` and configure the `API_BASE_URL` to the Istio ingress gateway hostname that was deployed in the earlier step.
+
+### Deploy Microservices & UI
 
 ```
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
