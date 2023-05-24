@@ -51,7 +51,7 @@ spec:
     - uri:
         exact: /
     - uri:
-        exact: /apps
+        prefix: /apps
     - uri:
         exact: /likes-service
     - uri:
