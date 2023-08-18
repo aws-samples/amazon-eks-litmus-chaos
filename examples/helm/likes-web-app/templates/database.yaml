@@ -7,6 +7,8 @@ metadata:
     app: postgres
   namespace: likes-web-app
 data:
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_USER: postgres
   POSTGRES_DB: postgres
   init: |
     CREATE TABLE "likes" (
@@ -16,10 +18,10 @@ data:
       image text
     );
     INSERT INTO "likes" (name, count, image) VALUES
-      ('Item 1',0, ''),
-      ('Item 2',0, ''),
-      ('Item 3',0, ''),
-      ('Item 4',0,'');
+      ('Amazon EC2',0, 'https://d3r6waxz1nnnmo.cloudfront.net/assets/ec2.png'),
+      ('Amazon ECS',0, 'https://d3r6waxz1nnnmo.cloudfront.net/assets/ecs.png'),
+      ('Amazon EKS',0, 'https://d3r6waxz1nnnmo.cloudfront.net/assets/eks.png'),
+      ('AWS Lambda',0,'https://d3r6waxz1nnnmo.cloudfront.net/assets/lambda.png');
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -93,6 +95,13 @@ spec:
               name: postgredb
             - mountPath: /docker-entrypoint-initdb.d
               name: init
+          resources:
+            requests:
+              memory: 8Gi
+              cpu: "4"
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
       volumes:
         - name: postgredb
           persistentVolumeClaim:
